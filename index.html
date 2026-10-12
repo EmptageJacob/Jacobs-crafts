@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Handmade crosses, names, stickers, gift tags and bookmarks by Jacob's Crafts.">
+<title>Jacob's Crafts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: a craft-table catalog. Logo up top, then one stitched section per item type, each with photo spots and a price list. */
+:root {
+  --bg: #FFFBF4;
+  --surface: #FFFFFF;
+  --ink: #2B2924;
+  --muted: #615B51;
+  --teal: #13707E;
+  --teal-soft: #E3F3F5;
+  --stitch: #1E8FA6;
+  --orange: #C25E0B;
+  --orange-soft: #FFF0E0;
+  --rule: #E6DDD0;
+  --display: 'Fredoka', 'Trebuchet MS', system-ui, sans-serif;
+  --body: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1A1C1D; --surface: #232729; --ink: #F3EFE8; --muted: #B9B2A6;
+    --teal: #6CCAD8; --teal-soft: #1F3236; --stitch: #4FB4C7;
+    --orange: #F4A35A; --orange-soft: #3A2A1C; --rule: #3A3D3F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1A1C1D; --surface: #232729; --ink: #F3EFE8; --muted: #B9B2A6;
+  --teal: #6CCAD8; --teal-soft: #1F3236; --stitch: #4FB4C7;
+  --orange: #F4A35A; --orange-soft: #3A2A1C; --rule: #3A3D3F;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 17px; line-height: 1.55;
+  padding-inline: 20px; padding-block: 0 48px;
+}
+.wrap { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.1; }
+
+/* Header */
+.top { display: flex; flex-wrap: wrap; align-items: center; gap: 24px 36px; padding-top: 28px; }
+.top img { width: 200px; height: auto; flex: none; filter: drop-shadow(0 4px 10px rgba(0,0,0,.12)); }
+.top .intro { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.top h1 { font-size: clamp(40px, 7vw, 64px); font-weight: 700; color: var(--teal); }
+.top p { margin: 0; color: var(--muted); max-width: 52ch; font-size: 18px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-weight: 800; font-size: 14px; padding: 6px 12px; border-radius: 999px; background: var(--orange-soft); color: var(--orange); }
+
+/* Section nav */
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a {
+  font-family: var(--display); font-weight: 600; font-size: 16px; text-decoration: none;
+  color: var(--teal); padding: 8px 14px; border: 2px dashed var(--stitch); border-radius: 999px;
+}
+nav a:hover { background: var(--teal-soft); }
+nav a:focus-visible, .copy:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+
+/* Item sections */
+section.item {
+  background: var(--surface); border: 3px dashed var(--stitch); border-radius: 26px;
+  padding: 24px; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 28px;
+  scroll-margin-top: 16px;
+}
+@media (max-width: 760px) { section.item { grid-template-columns: minmax(0, 1fr); padding: 18px; } }
+.photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.photo {
+  aspect-ratio: 1 / 1; max-width: 100%; border-radius: 16px; background: var(--teal-soft);
+  border: 2px dashed var(--stitch); display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 12px; color: var(--teal); font-weight: 700; font-size: 14px;
+  overflow: hidden;
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo.has-img { padding: 14px; background: #D9D9D9; }
+.photo.has-img img { object-fit: contain; border-radius: 6px; }
+.photo.on-dark { background: #1F1D1C; padding: 0; aspect-ratio: 3 / 4; }
+.photo.on-dark img { border-radius: 0; }
+figure.shot { margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.photo.tall { aspect-ratio: 3 / 4; padding: 12px; }
+.photo.tall img { border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+figure.shot.wide { grid-column: 1 / -1; align-self: center; }
+figure.shot.wide .photo { aspect-ratio: 1000 / 536; }
+figure.shot figcaption { font-weight: 800; font-size: 14px; color: var(--muted); text-align: center; }
+.photo svg { width: 34px; height: 34px; display: block; margin: 0 auto 6px; }
+.info { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.info h2 { font-size: 34px; font-weight: 700; color: var(--teal); }
+.tag { align-self: flex-start; font-weight: 800; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--orange); }
+.info p { margin: 0; color: var(--muted); }
+.prices { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.prices li { display: flex; align-items: baseline; gap: 8px; font-weight: 700; font-size: 18px; }
+.prices li .fill { flex: 1; border-bottom: 2px dotted var(--rule); min-width: 20px; }
+.prices li .amt { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 800; }
+.prices li small { display: block; font-weight: 600; font-size: 14px; color: var(--muted); }
+
+/* Colors */
+.colors { background: var(--teal-soft); border-radius: 26px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.colors h2 { font-size: 30px; color: var(--teal); }
+.colors p { margin: 0; max-width: 60ch; }
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 14px; }
+.sw { display: flex; flex-direction: column; align-items: center; gap: 6px; font-weight: 800; font-size: 15px; }
+.sw span { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--muted); }
+
+/* Info strip */
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.card { background: var(--orange-soft); border-radius: 22px; padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
+.card h3 { font-size: 22px; color: var(--orange); }
+.card p { margin: 0; }
+.card .prices li { font-size: 17px; }
+
+footer { text-align: center; font-family: var(--display); font-weight: 600; font-size: 20px; color: var(--teal); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <img src="logo.webp" alt="Jacob's Crafts logo with yarn, scissors and a spool of thread" width="480" height="480">
+    <div class="intro">
+      <h1>Jacob's Crafts</h1>
+      <p>Handmade crosses, names, stickers, gift tags and bookmarks. Have a look at what I make, then order in person.</p>
+      <div class="chips"><span class="chip">Made by hand</span><span class="chip">Custom orders welcome</span><span class="chip">Orders in person only</span></div>
+    </div>
+  </header>
+
+  <nav aria-label="Item types">
+    <a href="#crosses">Crosses</a><a href="#names">Names</a><a href="#stickers">Stickers</a><a href="#tags">Gift Tags</a><a href="#bookmarks">Bookmarks</a><a href="#colors">Colors</a><a href="#ordering">Ordering</a>
+  </nav>
+
+  <section class="item" id="crosses">
+    <div class="photos">
+      <figure class="shot"><div class="photo has-img on-dark"><img src="cross-single.webp" alt="White single color cross with the word Jesus cut out in script" width="675" height="900"></div><figcaption>Single Color Cross</figcaption></figure>
+      <figure class="shot"><div class="photo has-img on-dark"><img src="cross-two-layer.webp" alt="Purple two-layer cross with pink script reading Jesus across and Katie down" width="675" height="900"></div><figcaption>Two-Layer Cross · purple &amp; pink</figcaption></figure>
+    </div>
+    <div class="info">
+      <span class="tag">Custom · made to order</span>
+      <h2>Crosses</h2>
+      <p>A two-layer cross has a cross on top of a backing in a second color, with the name of your choice.</p>
+      <ul class="prices">
+        <li><span>Single Color Cross</span><span class="fill"></span><span class="amt">$1.25</span></li>
+        <li><span>Two-Layer Cross<small>Cross + backing</small></span><span class="fill"></span><span class="amt">$2.00</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="item" id="names">
+    <div class="photos">
+      <figure class="shot wide"><div class="photo has-img on-dark"><img src="name-three-layer.webp" alt="Three-layer name reading Jacob in pink script with white and black outlines" width="1000" height="536"></div><figcaption>Three-Layer Name · pink, white &amp; black</figcaption></figure>
+    </div>
+    <div class="info">
+      <span class="tag">Custom · made to order</span>
+      <h2>Names</h2>
+      <p>Layered name cutouts in the colors you pick.</p>
+      <ul class="prices">
+        <li><span>Two-Layer Name</span><span class="fill"></span><span class="amt">$2.00</span></li>
+        <li><span>Three-Layer Name</span><span class="fill"></span><span class="amt">$2.50</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="item" id="stickers">
+    <div class="photos">
+      <figure class="shot"><div class="photo has-img tall"><img src="sticker-single.png" alt="Sticker showing Jesus beside a lion with a cross and crown of thorns above a stormy sky" width="169" height="307"></div><figcaption>3" Sticker</figcaption></figure>
+      <figure class="shot"><div class="photo has-img tall"><img src="sticker-sheet.png" alt="Fall sticker set with gnomes holding pumpkins, pilgrim turkeys and slices of pumpkin pie" width="365" height="421"></div><figcaption>Sticker Set · fall</figcaption></figure>
+    </div>
+    <div class="info">
+      <h2>Stickers</h2>
+      <ul class="prices">
+        <li><span>3" Sticker</span><span class="fill"></span><span class="amt">$1.50</span></li>
+        <li><span>Sticker Set</span><span class="fill"></span><span class="amt">$4.00</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="item" id="tags">
+    <div class="photos">
+      <div class="photo has-img"><img src="tag-white.png" alt="White gift tag with a hole punched at the top" width="150" height="234"></div>
+      <div class="photo has-img"><img src="tag-black.png" alt="Black gift tag with a hole punched at the top" width="150" height="238"></div>
+    </div>
+    <div class="info">
+      <h2>Gift Tags</h2>
+      <ul class="prices">
+        <li><span>15 tags</span><span class="fill"></span><span class="amt">$1.50</span></li>
+        <li><span>30 tags</span><span class="fill"></span><span class="amt">$2.75</span></li>
+        <li><span>60 tags</span><span class="fill"></span><span class="amt">$5.00</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="item" id="bookmarks">
+    <div class="photos">
+      <figure class="shot"><div class="photo has-img tall"><img src="bookmark-flowers.webp" alt="Bookmark with a forest scene of foxgloves, lilies, daisies and butterflies" width="300" height="900"></div><figcaption>Wildflower Forest</figcaption></figure>
+      <figure class="shot"><div class="photo has-img tall"><img src="bookmark-angel.webp" alt="Bookmark with an angel in cream and gold robes under a gold border" width="300" height="900"></div><figcaption>Angel</figcaption></figure>
+    </div>
+    <div class="info">
+      <h2>Bookmarks</h2>
+      <ul class="prices">
+        <li><span>Bookmark</span><span class="fill"></span><span class="amt">$2.00</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="colors" id="colors" aria-labelledby="colors-h">
+    <h2 id="colors-h">Pick your colors</h2>
+    <p>For a two-layer cross or a name, choose a front color and a back color from these eight.</p>
+    <div class="swatches">
+      <div class="sw"><span style="background:#FFFFFF" aria-hidden="true"></span>White</div>
+      <div class="sw"><span style="background:#222222" aria-hidden="true"></span>Black</div>
+      <div class="sw"><span style="background:#7B4FA8" aria-hidden="true"></span>Purple</div>
+      <div class="sw"><span style="background:#8FD3F0" aria-hidden="true"></span>Light Blue</div>
+      <div class="sw"><span style="background:#3DA35D" aria-hidden="true"></span>Green</div>
+      <div class="sw"><span style="background:#F5D33D" aria-hidden="true"></span>Yellow</div>
+      <div class="sw"><span style="background:#F08A24" aria-hidden="true"></span>Orange</div>
+      <div class="sw"><span style="background:#F28DB2" aria-hidden="true"></span>Pink</div>
+    </div>
+  </section>
+
+  <div class="strip" id="ordering">
+    <div class="card">
+      <h3>How to order</h3>
+      <p>All orders are taken in person. For a custom cross or name, bring the name you want plus your front and back colors.</p>
+    </div>
+    <div class="card">
+      <h3>Mailing</h3>
+      <ul class="prices">
+        <li><span>Under 1 oz</span><span class="fill"></span><span class="amt">$1.50</span></li>
+        <li><span>Over 1 oz</span><span class="fill"></span><span class="amt">$2.00</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Sales tax</h3>
+      <p>7% sales tax is added to all purchases.</p>
+    </div>
+  </div>
+
+  <footer>Thank you for supporting Jacob's Crafts</footer>
+</div>
+
+</body>
+</html>
